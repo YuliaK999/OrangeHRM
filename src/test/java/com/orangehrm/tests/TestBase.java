@@ -18,6 +18,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.orangehrm.pages.LoginPage;
 import com.orangehrm.utils.BrowserUtilities;
 import com.orangehrm.utils.ConfigReader;
 import com.orangehrm.utils.Driver;
@@ -59,6 +60,9 @@ protected ExtentTest logger;
 		driver.manage().timeouts().implicitlyWait(Long.parseLong(
 				ConfigReader.getConfiguration("implicitTimeout")), TimeUnit.SECONDS);
 		driver.navigate().to(ConfigReader.getConfiguration("url"));
+		LoginPage loginPage = new LoginPage();
+		loginPage.positiveLogin();
+		
 	}
 	
 	

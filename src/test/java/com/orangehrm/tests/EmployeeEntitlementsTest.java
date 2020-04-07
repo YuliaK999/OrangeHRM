@@ -15,11 +15,6 @@ public class EmployeeEntitlementsTest extends TestBase {
 	public void verifyEmployeeEntitlements() throws InterruptedException {
 		logger = reporter.createTest("Verify Employee Entitlements");
 		
-		LoginPage loginPage = new LoginPage();
-		logger.info("Log in by entering the correct credentials");
-		loginPage.positiveLogin();
-		Thread.sleep(5000);
-		
 		EmployeeEntitlementsPage employeeEntitlementsPage = new EmployeeEntitlementsPage();
 		employeeEntitlementsPage.mainMenuLeave.click();
 		

@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.orangehrm.pages.LoginPage;
@@ -18,7 +19,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class LoginTest extends TestBase {
 	
-	@Test
+	@Test(enabled=false)
 	public void loginPOMPattern() {
 		logger = reporter.createTest("Positive Login Test");
 		
@@ -33,7 +34,7 @@ public class LoginTest extends TestBase {
 		
 	}
 	
-	@Test
+	@Test(enabled=false)
 	public void loginPOMPatternNegative() {
 		logger = reporter.createTest("Negative Login Test");
 		
@@ -52,7 +53,7 @@ public class LoginTest extends TestBase {
 		logger.pass("Verified that the error message is Invalid credentials.");
 	}
 	
-	@Test
+	@Test(enabled=false)
 	public void loginFailingTest() {
 		logger = reporter.createTest("Login Test with invalid credentials");
 		

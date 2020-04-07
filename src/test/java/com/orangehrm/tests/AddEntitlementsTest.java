@@ -14,11 +14,6 @@ public class AddEntitlementsTest extends TestBase{
 	public void addEntitlements() throws InterruptedException {
 		logger = reporter.createTest("Add entitlements");
 		
-		LoginPage loginPage = new LoginPage();
-		logger.info("Log in by entering the correct credentials");
-		loginPage.positiveLogin();
-		Thread.sleep(5000);
-		
 		AddEntitlementsPage addEntitlementsPage = new AddEntitlementsPage();
 		addEntitlementsPage.mainMenuLeave.click();
 		

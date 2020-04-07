@@ -16,11 +16,6 @@ public class LeaveListTest extends TestBase {
 	public void verifyLeaveList() throws InterruptedException  {
 		logger = reporter.createTest("Verify Leave List");
 		
-		LoginPage loginPage = new LoginPage();
-		logger.info("Log in by entering the correct credentials");
-		loginPage.positiveLogin();
-		Thread.sleep(5000);
-		
 		LeaveListPage leaveListPage = new LeaveListPage();
 		leaveListPage.menuLeaveList.click();
 		
@@ -90,7 +85,7 @@ public class LeaveListTest extends TestBase {
 				Assert.assertTrue(leaveListPage.messageNoRecords.getText().equals("No Records Found"));
 			}
 			
-			@Test//(order 3)
+			@Test(priority=3)
 			public void verifyResetButton()  {
 				logger = reporter.createTest("Verify reset button");
 				
