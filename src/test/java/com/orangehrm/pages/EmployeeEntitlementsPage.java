@@ -1,5 +1,7 @@
 package com.orangehrm.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -21,7 +23,7 @@ public class EmployeeEntitlementsPage {
 	@FindBy	(id = "menu_leave_viewLeaveEntitlements")
 	public WebElement optionEmployeeEntitlements;
 	
-	@FindBy	(id = "//h1")
+	@FindBy	(tagName = "h1")
 	public WebElement headingLeaveEntitlements;
 	
 	@FindBy	(id = "entitlements_employee_empName")
@@ -35,5 +37,31 @@ public class EmployeeEntitlementsPage {
 	
 	@FindBy	(id = "searchBtn")
 	public WebElement buttonSearch;
+	
+	@FindBy	(id = "btnAdd")
+	public WebElement buttonAdd;
+	
+	@FindBy (xpath="//*[@id='resultTable']//tr//td[3]")
+	public List<WebElement> addedRecords;
+	
+	@FindBy (xpath="//*[@id='resultTable']//tr//td[2]")
+	public List<WebElement> leaveTypes;
+	
+	@FindBy (xpath="//*[@id='resultTable']//tr//td[4]")
+	public List<WebElement> validFrom;
+	
+	@FindBy (xpath="//*[@id='resultTable']//tr//td[5]")
+	public List<WebElement> validTo;
+	
+	@FindBy (xpath="//tr[@class='total']")
+	public WebElement recordTotal;
+	
+	@FindBy (xpath="//tr[@class='total']//td[@class='right']")
+	public WebElement totalDays;
+	
+	@FindBy (xpath="//span[@class='validation-error']")
+	public WebElement messageRequired;
+	
+	
 	
 }

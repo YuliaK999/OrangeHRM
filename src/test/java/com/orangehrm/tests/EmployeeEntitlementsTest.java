@@ -1,12 +1,8 @@
 package com.orangehrm.tests;
 
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import com.orangehrm.pages.AddEntitlementsPage;
 import com.orangehrm.pages.EmployeeEntitlementsPage;
-import com.orangehrm.pages.LoginPage;
 import com.orangehrm.utils.BrowserUtilities;
 
 public class EmployeeEntitlementsTest extends TestBase {
@@ -15,11 +11,14 @@ public class EmployeeEntitlementsTest extends TestBase {
 	public void verifyEmployeeEntitlements() throws InterruptedException {
 		logger = reporter.createTest("Verify Employee Entitlements");
 		
+		logger.info("Login and navigate to \"Leave\" main menu");
 		EmployeeEntitlementsPage employeeEntitlementsPage = new EmployeeEntitlementsPage();
-		employeeEntitlementsPage.mainMenuLeave.click();
+		BrowserUtilities.hover(employeeEntitlementsPage.mainMenuLeave);
 		
 		logger.info("Navigate to \"Employee Entitlements\" page");
 		BrowserUtilities.hover(employeeEntitlementsPage.menuEntitlements);
+		Thread.sleep(3000);
+		logger.info("Navigate to \"Employee Entitlements\" page");
 		employeeEntitlementsPage.optionEmployeeEntitlements.click();
 		
 		
@@ -33,5 +32,22 @@ public class EmployeeEntitlementsTest extends TestBase {
 		
 		//Assert.
 	}	
+	
+	public void verifyErrorMessage() throws InterruptedException {
+		logger = reporter.createTest("Verify error message");
+		
+		logger.info("Login and navigate to \"Leave\" main menu");
+		EmployeeEntitlementsPage employeeEntitlementsPage = new EmployeeEntitlementsPage();
+		BrowserUtilities.hover(employeeEntitlementsPage.mainMenuLeave);
+		
+		logger.info("Navigate to \"Employee Entitlements\" page");
+		BrowserUtilities.hover(employeeEntitlementsPage.menuEntitlements);
+		Thread.sleep(3000);
+		logger.info("Navigate to \"Employee Entitlements\" page");
+		employeeEntitlementsPage.optionEmployeeEntitlements.click();
+		employeeEntitlementsPage.buttonSearch.click();
+		
+		Assert.assertTrue(employeeEntitlementsPage.messageRequired.getText().equals("Required"));
+	}
 
 }

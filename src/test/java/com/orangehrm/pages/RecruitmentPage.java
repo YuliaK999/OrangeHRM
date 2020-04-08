@@ -19,8 +19,7 @@ public class RecruitmentPage {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
 	
-		@FindBy(id="menu_recruitment_viewRecruitmentModule")
-
+	@FindBy(id="menu_recruitment_viewRecruitmentModule")
 	public WebElement recruitment;
 	
 	@FindBy(id="menu_recruitment_viewCandidates")

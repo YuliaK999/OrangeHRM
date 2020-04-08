@@ -10,19 +10,16 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-//import com.orangehrm.utils.LoginPage;
-import com.orangehrm.utils.RecruitmentPage;
+import com.orangehrm.pages.RecruitmentPage;
 import com.orangehrm.utils.ConfigReader;
 
 public class RecruitmentTest extends TestBase {
 
+	RecruitmentPage recruitment = new RecruitmentPage();
 	
-
-	RecruitmentTest recruitment = new RecruitmentPage();
 	@Test
-	public void RecruitmnetTest() {
+	public void RecruitemntTest() {
 
-		
 		recruitment.recruitment.click();
 		String actual = driver.getTitle();
 		String expected = "OrangeHRM";
@@ -31,8 +28,6 @@ public class RecruitmentTest extends TestBase {
 
 	@Test
 	public void CandidatesPositive() {
-
-		
 
 		driver.get(("https://opensource-demo.orangehrmlive.com/index.php/recruitment/viewCandidates"));
 

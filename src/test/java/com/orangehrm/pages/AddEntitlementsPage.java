@@ -23,7 +23,7 @@ public class AddEntitlementsPage {
 	@FindBy	(id = "menu_leave_addLeaveEntitlement")
 	public WebElement optionAddEntitlements;
 	
-	@FindBy	(id = "//h1")
+	@FindBy	(tagName = "h1")
 	public WebElement headingAddLeaveEntitlement;
 	
 	@FindBy	(xpath = "//label[@for='entitlements_employee']")
@@ -56,13 +56,25 @@ public class AddEntitlementsPage {
 	@FindBy	(xpath = "//span[@for='entitlements_entitlement']") 
 	public WebElement errorMessage1;
 	
-	@FindBy	(xpath = "//span[@for='entitlements_employee_empId']']") 
+	@FindBy	(xpath = "//span[@for='entitlements_employee_empId']") 
 	public WebElement errorMessage2;
 	
 	@FindBy	(xpath = "//span[@for='entitlements_entitlement']") 
 	public WebElement errorMessage3;
 	
+	@FindBy	(xpath = "//label[@for='entitlements_filters_bulk_assign']")
+	public WebElement labelAddToMultipleEmployees;
 	
+	@FindBy	(id = "entitlements_filters_bulk_assign")
+	public WebElement checkboxAddToMultipleEmployees;
 	
+	@FindBy	(xpath = "//*[@id='frmLeaveEntitlementAdd']/fieldset/ol/li[6]")
+	public WebElement labelRequiredField;
+	
+	@FindBy	(id = "entitlements_filters_location")
+	public WebElement fieldLocation;
+	
+	@FindBy	(id = "entitlements_filters_subunit")
+	public WebElement fieldSubUnit;
 
 }

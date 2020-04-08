@@ -18,6 +18,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.orangehrm.pages.AddEntitlementsPage;
 import com.orangehrm.pages.LoginPage;
 import com.orangehrm.utils.BrowserUtilities;
 import com.orangehrm.utils.ConfigReader;
@@ -49,7 +50,7 @@ protected ExtentTest logger;
 		reporter.setSystemInfo("Environment", "Staging/Pre-production");
 		reporter.setSystemInfo("OS", System.getProperty("os.name"));
 		reporter.setSystemInfo("browser", ConfigReader.getConfiguration("browser"));
-	}
+		}
 	
 	
 
@@ -83,7 +84,7 @@ protected ExtentTest logger;
 		
 		
 		
-		//Driver.closeDriver();
+		Driver.closeDriver();
 	}
 	
 	

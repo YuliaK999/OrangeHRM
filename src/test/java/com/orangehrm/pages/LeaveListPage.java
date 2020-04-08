@@ -18,7 +18,10 @@ public class LeaveListPage {
 	public LeaveListPage() {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
-		
+	
+	@FindBy(id = "menu_leave_viewLeaveModule")
+	public WebElement mainMenuLeave;
+			
 	@FindBy(id = "menu_leave_viewLeaveList")
 	public WebElement menuLeaveList;
 	
