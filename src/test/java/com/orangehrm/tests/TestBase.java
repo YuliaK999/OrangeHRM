@@ -61,6 +61,7 @@ protected ExtentTest logger;
 		driver.navigate().to(ConfigReader.getConfiguration("url"));
 		LoginPage loginPage = new LoginPage();
 		loginPage.positiveLogin();
+		BrowserUtilities.waitFor(3);
 		
 	}
 	
