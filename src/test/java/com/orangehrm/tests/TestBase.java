@@ -30,13 +30,11 @@ public abstract class TestBase {
 	
 protected WebDriver driver;
 protected Actions actions;
-
-
 protected ExtentReports reporter;
 protected ExtentSparkReporter htmlreporter;
 protected ExtentTest logger;
 
-	@BeforeSuite (alwaysRun = true)
+	@BeforeSuite //(alwaysRun = true)
 	public void setUpSuite() {
 		reporter = new ExtentReports();
 		String path = System.getProperty("user.dir") + "/test-output/extentReports/index.html";
@@ -54,7 +52,7 @@ protected ExtentTest logger;
 	
 	
 
-	@BeforeMethod (alwaysRun = true)
+	@BeforeMethod //(alwaysRun = true)
 	public void setUp () {
 		driver = Driver.getDriver();
 		actions = new Actions(driver);
@@ -67,7 +65,7 @@ protected ExtentTest logger;
 	}
 	
 	
-	@AfterMethod (alwaysRun = true)
+	@AfterMethod //(alwaysRun = true)
 	public void tearDown(ITestResult testResult) throws IOException {
 		
 		if(testResult.getStatus() == ITestResult.FAILURE) {
@@ -88,7 +86,7 @@ protected ExtentTest logger;
 	}
 	
 	
-	@AfterSuite (alwaysRun = true)
+	@AfterSuite //(alwaysRun = true)
 	
 	public void tearDownSuite() {
 		reporter.flush();

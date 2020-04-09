@@ -5,6 +5,7 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.orangehrm.utils.BrowserUtilities;
 import com.orangehrm.utils.ConfigReader;
 import com.orangehrm.utils.Driver;
 
@@ -76,5 +77,61 @@ public class AddEntitlementsPage {
 	
 	@FindBy	(id = "entitlements_filters_subunit")
 	public WebElement fieldSubUnit;
+	
+	@FindBy	(id = "ajax_count")
+	public WebElement matchesEmployees;
+	
+	public int numberOfEmployees (String location, String subUnit) {
+		int number=2;
+		
+		if (location=="All" & subUnit=="All") {
+			BrowserUtilities.selectByVisibleText(fieldLocation,"All");
+			BrowserUtilities.selectByVisibleText(fieldSubUnit,"All");
+			number=9;
+		}else if (location=="All" & subUnit=="IT") {
+			BrowserUtilities.selectByVisibleText(fieldLocation,"All");
+			BrowserUtilities.selectByVisibleText(fieldSubUnit,"IT");
+			number=2;
+		}else if (location=="All" & subUnit=="Sales") {
+			BrowserUtilities.selectByVisibleText(fieldLocation,"All");
+			BrowserUtilities.selectByVisibleText(fieldSubUnit,"Sales");
+			number=2;
+		}else if (location=="All" & subUnit=="Finance") {
+			BrowserUtilities.selectByVisibleText(fieldLocation,"All");
+			BrowserUtilities.selectByVisibleText(fieldSubUnit,"Finance");
+			number=2;
+		}else if (location=="All" & subUnit=="Administration") {
+			BrowserUtilities.selectByVisibleText(fieldLocation,"All");
+			BrowserUtilities.selectByVisibleText(fieldSubUnit,"Administration");
+			number=3;		
+		}else if (location=="Canada" & subUnit=="All") {
+			BrowserUtilities.selectByVisibleText(fieldLocation,"  Canada");
+			BrowserUtilities.selectByVisibleText(fieldSubUnit,"All");
+			number=2;
+		}else if (location=="Canada" & subUnit=="IT") {
+			BrowserUtilities.selectByVisibleText(fieldLocation,"  Canada");
+			BrowserUtilities.selectByVisibleText(fieldSubUnit,"IT");
+			number=2;
+		} else if (location=="United States" & subUnit=="All") {
+			BrowserUtilities.selectByVisibleText(fieldLocation,"  United States");
+			BrowserUtilities.selectByVisibleText(fieldSubUnit,"All");
+			number=7;
+		} else if (location=="United States" & subUnit=="Sales") {
+			BrowserUtilities.selectByVisibleText(fieldLocation,"  United States");
+			BrowserUtilities.selectByVisibleText(fieldSubUnit,"Sales");
+			number=2;
+		} else if (location=="United States" & subUnit=="Finance") {
+			BrowserUtilities.selectByVisibleText(fieldLocation,"  United States");
+			BrowserUtilities.selectByVisibleText(fieldSubUnit,"Finance");
+			number=2;
+		} else if (location=="United States" & subUnit=="Administration") {
+			BrowserUtilities.selectByVisibleText(fieldLocation,"  United States");
+			BrowserUtilities.selectByVisibleText(fieldSubUnit,"Administration");
+			number=3;
+		}else number=-1;
+		
+		return number;
+	}
+	
 
 }

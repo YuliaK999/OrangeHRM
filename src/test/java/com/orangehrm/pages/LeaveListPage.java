@@ -1,5 +1,8 @@
 package com.orangehrm.pages;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -80,7 +83,7 @@ public class LeaveListPage {
 	//public WebElement leaveDate;
 	
 	@FindBy(xpath ="//*[@id='resultTable']//tr//td[1]")
-	public WebElement leaveDate;
+	public WebElement leaveDates;
 	
 	@FindBy (xpath="//*[@id='resultTable']//tr//td[2]")
 	public WebElement employeeName;
@@ -93,6 +96,34 @@ public class LeaveListPage {
 	
 	@FindBy (xpath="//*[@id='resultTable']//tr//td")
 	public WebElement messageNoRecords;
+	
+	public int leaveLength(WebElement dates) {
+		
+	String begin = dates.getText().substring(0, 10);// 2015-10-19
+	int beginYear = Integer.parseInt(begin.substring(0,4));
+	String beginMonth = begin.substring(5,7);
+	int beginDay = Integer.parseInt(begin.substring(8));
+	String end = dates.getText().substring(14);//2015-10-30
+	int endYear = Integer.parseInt(end.substring(0,4));
+	String endMonth = end.substring(5,7);
+	int endDay = Integer.parseInt(end.substring(8));
+	LocalDate beginDate = LocalDate.of(beginYear, Month.OCTOBER, beginDay);
+	LocalDate endDate = LocalDate.of(endYear, Month.OCTOBER, endDay);
+	 
+	Period diff = Period.between(beginDate, endDate);
+	
+	return diff.getYears() + diff.getMonths() + diff.getDays();
+	}
+	
+	/*boolean isWithinRange(Date testDate) {
+		   return !(testDate.before(startDate) || testDate.after(endDate));
+		}
+	
+	LocalDate beginDate, maturity;
+    final Interval interval = new Interval(beginDate.toDateTimeAtStartOfDay(), maturity.toDateTimeAtStartOfDay());
+    if (interval.contains(new DateTime(beginDate.getYear(), Month.FEBRUARY, 29, 0, 1)) ||
+        interval.contains(new DateTime(maturity.getYear(), Month.FEBRUARY, 29, 0, 1))) 
+        */
 	
 	public void selectDate( String month, int year, int day){
 		BrowserUtilities.selectByVisibleText(dropdownSelectMonth, month);

@@ -23,7 +23,6 @@ public class AddEntitlementsTest extends TestBase{
 		
 		logger.info("Navigate to \"Add Entitlements\" page");
 		BrowserUtilities.hover(addEntitlementsPage.menuEntitlements);
-		Thread.sleep(3000);
 		addEntitlementsPage.optionAddEntitlements.click();
 			
 		logger.info("Verify the page's heading is \"Add Leave entitlement\"");
@@ -42,7 +41,7 @@ public class AddEntitlementsTest extends TestBase{
 		BrowserUtilities.selectByVisibleText(addEntitlementsPage.fieldLeavePeriod, "2020-01-01 - 2020-12-31");
 		addEntitlementsPage.fieldEntitlement.sendKeys("1");
 		addEntitlementsPage.saveButton.submit();
-		Thread.sleep(5000);
+		BrowserUtilities.waitFor(5);
 		logger.info("Verify the form has been saved");
 		driver.getPageSource().contains("Data has been saved successfully"); // test case fails
 	}
@@ -58,22 +57,24 @@ public class AddEntitlementsTest extends TestBase{
 				
 		logger.info("Navigate to \"Add Entitlements\" page");
 		BrowserUtilities.hover(addEntitlementsPage.menuEntitlements);
-		Thread.sleep(3000);
 		addEntitlementsPage.optionAddEntitlements.click();
 			
-		logger.info("Fill up and submit the form");
+		logger.info("Select \"Add to Multiple Employees\" checkbox");
 		if(!addEntitlementsPage.checkboxAddToMultipleEmployees.isSelected()) 
 			addEntitlementsPage.checkboxAddToMultipleEmployees.click();
 		
-		addEntitlementsPage.fieldEmployee.sendKeys("Linda Anderson");
-		BrowserUtilities.selectByValue(addEntitlementsPage.fieldLeaveType,"3");
-		BrowserUtilities.selectByVisibleText(addEntitlementsPage.fieldLeavePeriod, "2020-01-01 - 2020-12-31");
-		addEntitlementsPage.fieldEntitlement.sendKeys("1");
-		addEntitlementsPage.saveButton.submit();
-		Thread.sleep(5000);
-		logger.info("Verify the form has been saved");
-		driver.getPageSource().contains("Data has been saved successfully"); // test case fails
+		logger.info("Select Canada as location and IT as sub unit");
+		int n = addEntitlementsPage.numberOfEmployees("Canada", "IT");
+		BrowserUtilities.waitFor(5);
+		logger.info("Verify \"(Matches 2 employees)\" text is displayed");
+		if (n==-1)
+		Assert.assertTrue(addEntitlementsPage.matchesEmployees.getText().equals("(No matching employees)"));	
+		else
+		Assert.assertTrue(addEntitlementsPage.matchesEmployees.getText().equals("(Matches "+n+" employees)"));
+		logger.pass("Verified checkbox \"Add To Multiple Employees\"");
+				
 	}
+	
 	
 	@Test
 	public void verifyErrorMessages() throws InterruptedException {
@@ -85,19 +86,31 @@ public class AddEntitlementsTest extends TestBase{
 		
 		logger.info("Navigate to \"Add Entitlements\" page");
 		BrowserUtilities.hover(addEntitlementsPage.menuEntitlements);
-		Thread.sleep(3000);
 		addEntitlementsPage.optionAddEntitlements.click();
-		addEntitlementsPage.fieldEntitlement.sendKeys("Entitlement");
-		Thread.sleep(5000);
+		
+		logger.info("Type \"Any string\" into Entitlement field");
+		addEntitlementsPage.fieldEntitlement.sendKeys("Any string");
+		BrowserUtilities.waitFor(5);
+		logger.info("Verify \"Should be a number with upto 2 decimal places\" error message is displayed");
 		Assert.assertTrue(addEntitlementsPage.errorMessage1.getText().equals("Should be a number with upto 2 decimal places"));
 	
+		logger.info("Refresh the browser");
 		driver.navigate().refresh();
+		logger.info("Click on \"Save\" button");
 		addEntitlementsPage.saveButton.submit();
-		Thread.sleep(5000);
+		BrowserUtilities.waitFor(5);
+		
+		logger.info("Verify \"Required\" error messages are displayed next to Employee and Entitlement fields");
 		Assert.assertTrue(addEntitlementsPage.errorMessage2.getText().equals("Required"));
 		Assert.assertTrue(addEntitlementsPage.errorMessage3.getText().equals("Required"));
-		String color = addEntitlementsPage.errorMessage3.getCssValue("color"); 
-		Assert.assertEquals(color,"rgba(170, 73, 53, 1)");
+		logger.info("Verify the color of the error messages is red");
+		String color1 = addEntitlementsPage.errorMessage3.getCssValue("color"); 
+		Assert.assertEquals(color1,"rgba(170, 73, 53, 1)");
+		String color2 = addEntitlementsPage.errorMessage3.getCssValue("color"); 
+		Assert.assertEquals(color2,"rgba(170, 73, 53, 1)");
+		String color3 = addEntitlementsPage.errorMessage3.getCssValue("color"); 
+		Assert.assertEquals(color3,"rgba(170, 73, 53, 1)");
+		logger.pass("Verified error messages");
 	}	
 		
 	

@@ -20,7 +20,6 @@ public class LeaveListTest extends TestBase {
 		logger.info("Login and navigate to \"Leave\" main menu");
 		LeaveListPage leaveListPage = new LeaveListPage();
 		BrowserUtilities.hover(leaveListPage.mainMenuLeave);
-		Thread.sleep(3000);
 		logger.info("Navigate to \"Leave Lists\" page");
 		leaveListPage.menuLeaveList.click();
 		
@@ -36,7 +35,7 @@ public class LeaveListTest extends TestBase {
 		for (WebElement element : leaveListPage.checkboxleaveStatuses)
 			Assert.assertTrue(element.isSelected());
 		
-		leaveListPage.fieldEmployee.sendKeys("Belinda Anderson");
+		leaveListPage.fieldEmployee.sendKeys("Linda Anderson");
 			
 		BrowserUtilities.selectByVisibleText(leaveListPage.dropdownSubUnit,"All");
 		
@@ -44,24 +43,22 @@ public class LeaveListTest extends TestBase {
 			leaveListPage.checkboxIncludePastEmployees.click();
 		
 		leaveListPage.buttonSearch.click();
-		Thread.sleep(5000);
+		BrowserUtilities.waitFor(5);
 		
-		Assert.assertEquals(leaveListPage.employeeName.getText(), "Belinda Anderson");
+		Assert.assertEquals(leaveListPage.employeeName.getText(), "Linda Anderson");
 		
-		//Assert.assertTrue(date between dateFrom and dateTo)
-		
-		//Assert.assertTrue(count number of days)
+		int number = leaveListPage.leaveLength(leaveListPage.leaveDates);
+		Assert.assertEquals(number-1,leaveListPage.numberOfDays.getText());
+		logger.pass("Verified leave list");
 		}
 	
 		@Test
-		
 		public void verifyLeaveSearchByStatus() throws InterruptedException  {
 			logger = reporter.createTest("Verify leave search by Status");
 			
 			logger.info("Login and navigate to \"Leave\" main menu");
 			LeaveListPage leaveListPage = new LeaveListPage();
 			BrowserUtilities.hover(leaveListPage.mainMenuLeave);
-			Thread.sleep(3000);
 			logger.info("Navigate to \"Leave Lists\" page");
 			leaveListPage.menuLeaveList.click();
 			
@@ -89,17 +86,16 @@ public class LeaveListTest extends TestBase {
 			
 			Assert.assertEquals(leaveListPage.employeeName.getText(), "Linda Anderson");			
 			Assert.assertTrue(leaveListPage.leaveStatus.getText().contains("Pending Approval"));
+			logger.pass("Verified leave search by Status");
 		}
 			
 			@Test
-			
 			public void verifyLeaveSearchBySubUnit() throws InterruptedException  {
 				logger = reporter.createTest("Verify leave search by Sub Unit");
 				
 				logger.info("Login and navigate to \"Leave\" main menu");
 				LeaveListPage leaveListPage = new LeaveListPage();
 				BrowserUtilities.hover(leaveListPage.mainMenuLeave);
-				Thread.sleep(3000);
 				logger.info("Navigate to \"Leave Lists\" page");
 				leaveListPage.menuLeaveList.click();
 				
@@ -113,28 +109,28 @@ public class LeaveListTest extends TestBase {
 				leaveListPage.fieldEmployee.sendKeys("Linda Anderson");
 				BrowserUtilities.selectByVisibleText(leaveListPage.dropdownSubUnit,"Administration");
 				leaveListPage.buttonSearch.click();
-				Thread.sleep(5000);
+				BrowserUtilities.waitFor(5);
 				Assert.assertEquals(leaveListPage.employeeName.getText(), "Linda Anderson");
 				
 				BrowserUtilities.selectByVisibleText(leaveListPage.dropdownSubUnit, "IT");
 				leaveListPage.buttonSearch.click();
 				Thread.sleep(5000);
 				Assert.assertTrue(leaveListPage.messageNoRecords.getText().equals("No Records Found"));
+				logger.pass("Verified leave search by subUnit");
 			}
 			
-			@Test(dependsOnMethods = {"verifyLeaveList"})
-			
+			@Test
 			public void verifyResetButton() throws InterruptedException  {
 				logger = reporter.createTest("Verify reset button");
 				
 				LeaveListPage leaveListPage = new LeaveListPage();
-				/*logger.info("Login and navigate to \"Leave\" main menu");
+				logger.info("Login and navigate to \"Leave\" main menu");
 				BrowserUtilities.hover(leaveListPage.mainMenuLeave);
-				Thread.sleep(3000);
 				logger.info("Navigate to \"Leave Lists\" page");
-				leaveListPage.menuLeaveList.click();*/
+				leaveListPage.menuLeaveList.click();
+				logger.info("Click on \"Reset\" button");
 				leaveListPage.buttonReset.click();
-				Thread.sleep(5000);
+				BrowserUtilities.waitFor(5);
 				
 				Assert.assertTrue(leaveListPage.calendarFrom.getAttribute("value").equals("2020-01-01"));
 				Assert.assertTrue(leaveListPage.calendarTo.getAttribute("value").equals("2021-12-31"));
@@ -142,6 +138,7 @@ public class LeaveListTest extends TestBase {
 				Assert.assertTrue(leaveListPage.fieldEmployee.getText().isEmpty());
 				Assert.assertTrue(leaveListPage.dropdownSubUnit.getAttribute("value").equals("0"));
 				Assert.assertFalse(leaveListPage.checkboxIncludePastEmployees.isSelected());
+				logger.pass("Verified reset button");
 	
 			}
 }

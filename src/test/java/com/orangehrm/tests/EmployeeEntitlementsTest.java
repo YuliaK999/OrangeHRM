@@ -7,7 +7,7 @@ import com.orangehrm.utils.BrowserUtilities;
 
 public class EmployeeEntitlementsTest extends TestBase {
 	
-	@Test
+	@Test(enabled=false)
 	public void verifyEmployeeEntitlements() throws InterruptedException {
 		logger = reporter.createTest("Verify Employee Entitlements");
 		
@@ -33,6 +33,7 @@ public class EmployeeEntitlementsTest extends TestBase {
 		//Assert.
 	}	
 	
+	@Test(enabled=false)
 	public void verifyErrorMessage() throws InterruptedException {
 		logger = reporter.createTest("Verify error message");
 		
