@@ -12,6 +12,12 @@ public class AddEmployeePage {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
 	
+	@FindBy(id = "firstName")
+	 public WebElement firstNameField;
+	 
+	@FindBy(id = "lastName")
+	public WebElement lastNameField;
+	
 	@FindBy(id = "menu_pim_addEmployee")
 	public WebElement mainAddEmployee;
 	

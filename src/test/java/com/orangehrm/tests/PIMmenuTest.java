@@ -3,6 +3,7 @@ package com.orangehrm.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.orangehrm.pages.PimMenuPage;
+import com.orangehrm.utils.BrowserUtilities;
 
 public class PIMmenuTest extends TestBase {
 	
@@ -15,7 +16,7 @@ public class PIMmenuTest extends TestBase {
 		PimMenuPage pimMenu = new PimMenuPage();
 		logger.info("Navigate to \"PIM menu \" page");
 		pimMenu.mainMenuPIM.click();
-		Thread.sleep(3000);
+		BrowserUtilities.waitFor(5);;
 		logger.info("Verifying the URL contains \"leave/viewEmployeeList\"");
 		Assert.assertTrue(driver.getCurrentUrl().contains("viewEmployeeList"));
 		logger.pass("Verifyed the URL contains \"leave/viewEmployeeList\"");
@@ -28,7 +29,7 @@ public class PIMmenuTest extends TestBase {
 		PimMenuPage pimMenu = new PimMenuPage();
 		logger.info("Navigate to \"PIM menu \" page");
 		pimMenu.mainMenuPIM.click();
-		Thread.sleep(3000);
+		BrowserUtilities.waitFor(5);
 		logger.info("Verifying the structure: \"Configuration, Employee List, Add Employee, Reports \"");
 		Assert.assertTrue(pimMenu.menuConfiguration.getText().equals("Configuration"));
 		Assert.assertTrue(pimMenu.menuEmployeeList.getText().equals("Employee List"));

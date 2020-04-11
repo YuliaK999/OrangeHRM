@@ -12,6 +12,7 @@ import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.orangehrm.pages.RecruitmentPage;
+import com.orangehrm.utils.BrowserUtilities;
 import com.orangehrm.utils.ConfigReader;
 
 public class RecruitmentTest extends TestBase {
@@ -19,9 +20,10 @@ public class RecruitmentTest extends TestBase {
 	RecruitmentPage recruitment = new RecruitmentPage();
 	
 	@Test
-	public void RecruitemntTest() {
-
+	public void Recruitment() {
+		logger = reporter.createTest("Recruitment");
 		recruitment.recruitment.click();
+		BrowserUtilities.waitFor(5);
 		String actual = driver.getTitle();
 		String expected = "OrangeHRM";
 		Assert.assertEquals(actual, expected);
@@ -29,43 +31,38 @@ public class RecruitmentTest extends TestBase {
 
 	@Test
 	public void CandidatesPositive() {
-
+		logger = reporter.createTest("CandidatesPositive");
 		driver.get(("https://opensource-demo.orangehrmlive.com/index.php/recruitment/viewCandidates"));
-
+		//jobtitleCandidates = new Select(driver.findElement(By.id("candidateSearch_modeOfApplication")));
+		//jobtitleCandidates.selectByValue("");
 		recruitment.candidates.click();
 
 		// recruitmnet.jobTitle.click();
 		// recruitmnet.status.click();
-
-		Select jobtitle = new Select(driver.findElement(By.xpath("//select[@name='candidateSearch[jobTitle]']")));
-
-		jobtitle.selectByVisibleText("CEO");
-
-		jobtitle = new Select(driver.findElement(By.id("candidateSearch_status")));
-		jobtitle.selectByValue("APPLICATION INITIATED");
-
+		
+		BrowserUtilities.selectByValue(recruitment.statusCandidates,"APPLICATION INITIATED");
+		
 		recruitment.name.sendKeys("Nazim");
 
 		recruitment.keyword.sendKeys("ceo");
 
 		recruitment.fromdate.sendKeys("2020-10-19");
 		recruitment.todate.sendKeys("2020-10-29");
-
-		jobtitle = new Select(driver.findElement(By.id("candidateSearch_modeOfApplication")));
-		jobtitle.selectByValue("2");
+		
+		BrowserUtilities.selectByValue(recruitment.job_Title,"2");
+		
 
 		recruitment.searchButton.click();
+		BrowserUtilities.waitFor(5);
 
 		Assert.assertTrue(true, "CEO");
-		System.out.println("pass");
+		
 
 	}
 
 	@Test
 	public void CandidatesNegative() {
-
-		
-
+		logger = reporter.createTest("CandidatesNegative");
 		driver.get(("https://opensource-demo.orangehrmlive.com/index.php/recruitment/viewCandidates"));
 
 		recruitment.candidates.click();
@@ -73,22 +70,19 @@ public class RecruitmentTest extends TestBase {
 		// recruitmnet.jobTitle.click();
 		// recruitmnet.status.click();
 
-		Select jobtitleCandidates = new Select(driver.findElement(By.xpath("//select[@name='candidateSearch[jobTitle]']")));
-
-		jobtitleCandidates.selectByVisibleText("CEO");
-
-		jobtitleCandidates = new Select(driver.findElement(By.id("candidateSearch_status")));
-		jobtitleCandidates.selectByValue("APPLICATION INITIATED");
-
+		BrowserUtilities.selectByVisibleText(recruitment.jobTitleCandidate,"CEO");
+		
+		BrowserUtilities.selectByValue(recruitment.statusCandidates,"APPLICATION INITIATED");
+		
 		recruitment.name.sendKeys("");
 
 		recruitment.keyword.sendKeys("");
 
 		recruitment.todate.sendKeys("");
 
-		jobtitleCandidates = new Select(driver.findElement(By.id("candidateSearch_modeOfApplication")));
-		jobtitleCandidates.selectByValue("");
+	
 		driver.findElement(By.id("btnSrch")).click();
+		BrowserUtilities.waitFor(5);
 		String expected = "No Records Found";
 
 		Assert.assertTrue(true, expected);
@@ -99,6 +93,7 @@ public class RecruitmentTest extends TestBase {
 	}
 	@Test
 	public void VacancyTest()  {
+		logger = reporter.createTest("VacancyTest");
 		
 		driver.get("https://opensource-demo.orangehrmlive.com/index.php/recruitment/viewJobVacancy");
 		//recruitment.vacancies.click();
@@ -106,30 +101,25 @@ public class RecruitmentTest extends TestBase {
 		Assert.assertTrue(driver.getTitle().contains("OrangeHRM"));
 		//Assert.assertFalse(driver.findElement(By.className("toggle tiptip")).isDisplayed());
 		recruitment.jobTitleVacancies.click();
-		Select jobtitleVacancies = new Select(driver.findElement(By.id("vacancySearch_jobTitle")));
-		
-		jobtitleVacancies.selectByValue("5");
-		Select status = new Select(driver.findElement(By.id("vacancySearch_status")));
-		
-		status.selectByVisibleText("Active");
-		
+		BrowserUtilities.selectByValue(recruitment.jobTitleVacancies,"5");
+				
+		BrowserUtilities.selectByVisibleText(recruitment.statusVacancies,"Active");		
+				
 		recruitment.searchButton.click();
+		BrowserUtilities.waitFor(5);
 		recruitment.addButton.click();
+		
 		String expected = "Job Title *";
-		String actual = driver.findElement(By.xpath("//label[@for='addJobVacancy_jobTitle']")).getText();
+		String actual = recruitment.jobTitle.getText();
 
 		Assert.assertEquals(actual, expected);
 		
-		
-		
-		
-		
-		
+			
 	}
 
 	
 		
-	}
+}
 
 
 		

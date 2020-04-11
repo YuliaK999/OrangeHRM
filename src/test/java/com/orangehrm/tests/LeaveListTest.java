@@ -22,7 +22,7 @@ public class LeaveListTest extends TestBase {
 		BrowserUtilities.hover(leaveListPage.mainMenuLeave);
 		logger.info("Navigate to \"Leave Lists\" page");
 		leaveListPage.menuLeaveList.click();
-		
+		logger.info("Fill up leave list form");
 		leaveListPage.calendarFrom.click();
 		leaveListPage.selectDate("Jan", 2015, 1);		
 		
@@ -44,11 +44,11 @@ public class LeaveListTest extends TestBase {
 		
 		leaveListPage.buttonSearch.click();
 		BrowserUtilities.waitFor(5);
-		
+		logger.info("Verify leave list by employee name");
 		Assert.assertEquals(leaveListPage.employeeName.getText(), "Linda Anderson");
-		
+		logger.info("Verify number of days is calculated correctly");
 		int number = leaveListPage.leaveLength(leaveListPage.leaveDates);
-		Assert.assertEquals(number-1,leaveListPage.numberOfDays.getText());
+		Assert.assertEquals(number-1,leaveListPage.numberOfDays.getText().substring(0, 2));
 		logger.pass("Verified leave list");
 		}
 	
@@ -61,7 +61,7 @@ public class LeaveListTest extends TestBase {
 			BrowserUtilities.hover(leaveListPage.mainMenuLeave);
 			logger.info("Navigate to \"Leave Lists\" page");
 			leaveListPage.menuLeaveList.click();
-			
+			logger.info("Fill up leave list form");
 			leaveListPage.calendarFrom.click();
 			leaveListPage.selectDate("Jan", 2015, 1);		
 			
@@ -69,21 +69,22 @@ public class LeaveListTest extends TestBase {
 			leaveListPage.selectDate("Dec", 2015, 31);
 			
 			leaveListPage.checkboxLeaveStatusAll.click();
-			
+			logger.info("Verify all the statuses are selected");
 			for (WebElement element : leaveListPage.checkboxleaveStatuses)
 				Assert.assertTrue(element.isSelected());
 			
 			leaveListPage.checkboxLeaveStatusAll.click();
-			
+			logger.info("Verify all the statuses are deselected");
 			for (WebElement element : leaveListPage.checkboxleaveStatuses)
 				Assert.assertFalse(element.isSelected());
 			
-						
+			logger.info("Select Pending Approval status");
+			Thread.sleep(5000);
 			leaveListPage.checkboxLeaveStatusPendingApproval.click();
 			leaveListPage.fieldEmployee.sendKeys("Linda Anderson");
 			leaveListPage.buttonSearch.click();
 			Thread.sleep(5000);
-			
+			logger.info("Verify the employee and the status");
 			Assert.assertEquals(leaveListPage.employeeName.getText(), "Linda Anderson");			
 			Assert.assertTrue(leaveListPage.leaveStatus.getText().contains("Pending Approval"));
 			logger.pass("Verified leave search by Status");
@@ -98,7 +99,7 @@ public class LeaveListTest extends TestBase {
 				BrowserUtilities.hover(leaveListPage.mainMenuLeave);
 				logger.info("Navigate to \"Leave Lists\" page");
 				leaveListPage.menuLeaveList.click();
-				
+				logger.info("Fill up leave list form");
 				leaveListPage.calendarFrom.click();
 				leaveListPage.selectDate("Jan", 2015, 1);		
 				
@@ -107,14 +108,17 @@ public class LeaveListTest extends TestBase {
 				
 				leaveListPage.checkboxLeaveStatusAll.click();
 				leaveListPage.fieldEmployee.sendKeys("Linda Anderson");
+				logger.info("Select SubUnit \"Administration\"");
 				BrowserUtilities.selectByVisibleText(leaveListPage.dropdownSubUnit,"Administration");
 				leaveListPage.buttonSearch.click();
 				BrowserUtilities.waitFor(5);
+				logger.info("Verify the employee");
 				Assert.assertEquals(leaveListPage.employeeName.getText(), "Linda Anderson");
-				
+				logger.info("Select SubUnit \"IT\"");
 				BrowserUtilities.selectByVisibleText(leaveListPage.dropdownSubUnit, "IT");
 				leaveListPage.buttonSearch.click();
 				Thread.sleep(5000);
+				logger.info("Verify \"No Records Found\" message is displayed");
 				Assert.assertTrue(leaveListPage.messageNoRecords.getText().equals("No Records Found"));
 				logger.pass("Verified leave search by subUnit");
 			}

@@ -35,8 +35,17 @@ public class RecruitmentPage {
 	@FindBy(id = "candidateSearch_status")
 	public WebElement statusCandidates;
 	
+	@FindBy(xpath ="//select[@name='candidateSearch[jobTitle]']")
+	public WebElement jobTitleCandidate;
+	
 	@FindBy(id = "vacancySearch_status")
 	public WebElement statusVacancies;
+	
+	@FindBy(xpath = "//label[@for='addJobVacancy_jobTitle']")
+	public WebElement jobTitle;
+	
+	@FindBy(id="candidateSearch_modeOfApplication")
+	public WebElement job_Title;
 	
 	@FindBy(id="vacancySearch_jobTitle")
 	public WebElement jobTitleVacancies;

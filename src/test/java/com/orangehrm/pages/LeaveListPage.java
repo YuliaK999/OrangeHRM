@@ -115,17 +115,9 @@ public class LeaveListPage {
 	return diff.getYears() + diff.getMonths() + diff.getDays();
 	}
 	
-	/*boolean isWithinRange(Date testDate) {
-		   return !(testDate.before(startDate) || testDate.after(endDate));
-		}
+
 	
-	LocalDate beginDate, maturity;
-    final Interval interval = new Interval(beginDate.toDateTimeAtStartOfDay(), maturity.toDateTimeAtStartOfDay());
-    if (interval.contains(new DateTime(beginDate.getYear(), Month.FEBRUARY, 29, 0, 1)) ||
-        interval.contains(new DateTime(maturity.getYear(), Month.FEBRUARY, 29, 0, 1))) 
-        */
-	
-	public void selectDate( String month, int year, int day){
+	public void selectDate(String month, int year, int day){
 		BrowserUtilities.selectByVisibleText(dropdownSelectMonth, month);
 		BrowserUtilities.selectByVisibleText(dropdownSelectYear,""+year);
 		selectCalendarDay (tableSelectDay, day);
