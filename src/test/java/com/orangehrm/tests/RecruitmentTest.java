@@ -20,26 +20,22 @@ public class RecruitmentTest extends TestBase {
 	RecruitmentPage recruitment = new RecruitmentPage();
 	
 	@Test
-	public void Recruitment() {
-		logger = reporter.createTest("Recruitment");
-		recruitment.recruitment.click();
+	public void verifyPageTitle() {
+		logger = reporter.createTest("Verify PageTitle is \"OrangeHRM\"");
+		recruitment.mainMenuRecruitment.click();
 		BrowserUtilities.waitFor(5);
 		String actual = driver.getTitle();
 		String expected = "OrangeHRM";
 		Assert.assertEquals(actual, expected);
+		logger.pass("Verified PageTitle is \"OrangeHRM\"");
 	}
 
 	@Test
-	public void CandidatesPositive() {
-		logger = reporter.createTest("CandidatesPositive");
-		driver.get(("https://opensource-demo.orangehrmlive.com/index.php/recruitment/viewCandidates"));
-		//jobtitleCandidates = new Select(driver.findElement(By.id("candidateSearch_modeOfApplication")));
-		//jobtitleCandidates.selectByValue("");
+	public void verifyCandidateForm() {
+		logger = reporter.createTest("Verify candidate form");
+		recruitment.mainMenuRecruitment.click();
 		recruitment.candidates.click();
 
-		// recruitmnet.jobTitle.click();
-		// recruitmnet.status.click();
-		
 		BrowserUtilities.selectByValue(recruitment.statusCandidates,"APPLICATION INITIATED");
 		
 		recruitment.name.sendKeys("Nazim");
@@ -49,75 +45,29 @@ public class RecruitmentTest extends TestBase {
 		recruitment.fromdate.sendKeys("2020-10-19");
 		recruitment.todate.sendKeys("2020-10-29");
 		
-		BrowserUtilities.selectByValue(recruitment.job_Title,"2");
+		BrowserUtilities.selectByValue(recruitment.jobTitleCandidates,"9");
 		
-
 		recruitment.searchButton.click();
 		BrowserUtilities.waitFor(5);
 
-		Assert.assertTrue(true, "CEO");
-		
+		logger.info("Verify \"No Records Found\" message is displayed");
+		Assert.assertTrue(recruitment.messageNoRecords.getText().equals("No Records Found"));
+		logger.pass("Verified no records are found");
 
 	}
 
 	@Test
-	public void CandidatesNegative() {
-		logger = reporter.createTest("CandidatesNegative");
-		driver.get(("https://opensource-demo.orangehrmlive.com/index.php/recruitment/viewCandidates"));
-
-		recruitment.candidates.click();
-
-		// recruitmnet.jobTitle.click();
-		// recruitmnet.status.click();
-
-		BrowserUtilities.selectByVisibleText(recruitment.jobTitleCandidate,"CEO");
-		
-		BrowserUtilities.selectByValue(recruitment.statusCandidates,"APPLICATION INITIATED");
-		
-		recruitment.name.sendKeys("");
-
-		recruitment.keyword.sendKeys("");
-
-		recruitment.todate.sendKeys("");
-
+	@Ignore
+	public void verifyAddButton()  {
+		logger = reporter.createTest("Verify Add button");
+		recruitment.mainMenuRecruitment.click();
+		recruitment.vacancies.click();
 	
-		driver.findElement(By.id("btnSrch")).click();
-		BrowserUtilities.waitFor(5);
-		String expected = "No Records Found";
-
-		Assert.assertTrue(true, expected);
-
-		// Assert.assertTrue(true, "CEO");
-		System.out.println("pass");
-
-	}
-	@Test
-	public void VacancyTest()  {
-		logger = reporter.createTest("VacancyTest");
-		
-		driver.get("https://opensource-demo.orangehrmlive.com/index.php/recruitment/viewJobVacancy");
-		//recruitment.vacancies.click();
-		
-		Assert.assertTrue(driver.getTitle().contains("OrangeHRM"));
-		//Assert.assertFalse(driver.findElement(By.className("toggle tiptip")).isDisplayed());
-		recruitment.jobTitleVacancies.click();
-		BrowserUtilities.selectByValue(recruitment.jobTitleVacancies,"5");
-				
-		BrowserUtilities.selectByVisibleText(recruitment.statusVacancies,"Active");		
-				
-		recruitment.searchButton.click();
-		BrowserUtilities.waitFor(5);
 		recruitment.addButton.click();
+		// Verify the title "Add Job Vacancy",send keys to all the fields, 
+		//verify nothing happens when click on Save
 		
-		String expected = "Job Title *";
-		String actual = recruitment.jobTitle.getText();
-
-		Assert.assertEquals(actual, expected);
-		
-			
 	}
-
-	
 		
 }
 

@@ -6,16 +6,18 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.orangehrm.utils.Driver;
 
-public class AdminPage {
+public class LanguagesPage {
 	
-	public AdminPage() {
+	public LanguagesPage() {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
 	
 	@FindBy(id = "menu_admin_viewAdminModule")
 	public WebElement mainMenuAdmin;
 	
-	@FindBy(tagName = "h1")
+	@FindBy(className = "toggle tiptip")
 	public WebElement headingSystemUsers;
 
 }
+
+

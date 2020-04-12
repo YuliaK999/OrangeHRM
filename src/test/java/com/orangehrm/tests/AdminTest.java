@@ -22,6 +22,7 @@ public class AdminTest extends TestBase{
 			Assert.assertTrue(driver.getCurrentUrl().contains("SystemUsers"));
 			
 			logger.info("Verify the page's heading is \"System Users\"");
+			System.out.println(adminPage.headingSystemUsers.getText());
 			Assert.assertTrue(adminPage.headingSystemUsers.getText().equals("System Users"));
 			
 			logger.info("Verify the labels");

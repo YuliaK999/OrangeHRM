@@ -20,14 +20,13 @@ public class RecruitmentPage {
 	}
 	
 	@FindBy(id="menu_recruitment_viewRecruitmentModule")
-	public WebElement recruitment;
+	public WebElement mainMenuRecruitment;
 	
 	@FindBy(id="menu_recruitment_viewCandidates")
 	public WebElement candidates;
 	
 	@FindBy(id="menu_recruitment_viewJobVacancy")
 	public WebElement vacancies;
-	
 	
 	@FindBy(id="candidateSearch_jobTitle")
 	public WebElement jobTitleCandidates;
@@ -41,11 +40,8 @@ public class RecruitmentPage {
 	@FindBy(id = "vacancySearch_status")
 	public WebElement statusVacancies;
 	
-	@FindBy(xpath = "//label[@for='addJobVacancy_jobTitle']")
-	public WebElement jobTitle;
-	
 	@FindBy(id="candidateSearch_modeOfApplication")
-	public WebElement job_Title;
+	public WebElement jobTitle;
 	
 	@FindBy(id="vacancySearch_jobTitle")
 	public WebElement jobTitleVacancies;
@@ -53,6 +49,8 @@ public class RecruitmentPage {
 	@FindBy(id = "candidateSearch_toDate")
 	public WebElement todate;
 	
+	@FindBy (xpath="//*[@id='resultTable']//tr//td")
+	public WebElement messageNoRecords;
 	
 	@FindBy(id = "candidateSearch_fromDate")
 	public WebElement fromdate;
