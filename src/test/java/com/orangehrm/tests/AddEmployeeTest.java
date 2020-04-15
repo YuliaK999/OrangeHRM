@@ -10,14 +10,14 @@ import com.orangehrm.utils.BrowserUtilities;
 
 public class AddEmployeeTest extends TestBase {
 
-	/*@BeforeMethod
+	@BeforeMethod
 	public void login() throws InterruptedException {
 		logger = reporter.createTest("Before Test");
 		PimMenuPage pimMenu = new PimMenuPage();
 		logger.info("Navigate to \"PIM menu \" page");
 		pimMenu.mainMenuPIM.click();
 		Thread.sleep(3000);
-	}*/
+	}
 	
 	@Test
 	 public void addEmployeeFunctionalityTest() throws InterruptedException {
