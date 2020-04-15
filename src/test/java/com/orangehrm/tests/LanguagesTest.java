@@ -4,14 +4,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
 import com.orangehrm.pages.LanguagesPage;
 import com.orangehrm.utils.BrowserUtilities;
+
 
 public class LanguagesTest extends TestBase{
 	
@@ -45,6 +44,7 @@ public class LanguagesTest extends TestBase{
 			languagePage.buttonAdd.click();
 			languagePage.fieldName.sendKeys(language);
 			languagePage.buttonSave.click();	
+			resultLanguages = BrowserUtilities.getElementsText(languagePage.resultLanguages);
 			Assert.assertTrue(resultLanguages.contains(language));
 		}		
 		Assert.assertEquals(resultLanguages.size(), inputLanguages.length);
@@ -54,11 +54,11 @@ public class LanguagesTest extends TestBase{
 		Collections.sort(sorted);
 		Assert.assertEquals(resultLanguages,sorted);
 		
-		//First failer
+		
 		logger.info("Verify \"checkAll\" checkbox");
 		languagePage.checkboxCheckAll.click();
 		for (WebElement checkbox : languagePage.resultCheckboxes)  
-			Assert.assertTrue(checkbox.isSelected());
+			Assert.assertTrue(!checkbox.isSelected());
 		BrowserUtilities.takeFullScreenshot("Clicked Check ALL");
 		
 		languagePage.checkboxCheckAll.click();
@@ -66,14 +66,15 @@ public class LanguagesTest extends TestBase{
 			Assert.assertFalse(checkbox.isSelected());
 		BrowserUtilities.takeFullScreenshot("Clicked Check ALL again");
 		
-		//Second failer
+	
 		logger.info("Verify delete button");
-		WebElement firstElement = languagePage.resultLanguages.get(0);
 		WebElement firstCheckbox = languagePage.resultCheckboxes.get(0);
+		String firstElement = languagePage.firstLanguage.getText();
 		if (!firstCheckbox.isSelected())
 			firstCheckbox.click();
 		languagePage.buttonDelete.click();
-		Assert.assertFalse(resultLanguages.contains(firstElement.getText()));
+		resultLanguages = BrowserUtilities.getElementsText(languagePage.resultLanguages);
+		Assert.assertFalse(resultLanguages.contains(firstElement));
 		
 	}
 

@@ -47,6 +47,9 @@ public class LanguagesPage {
 	@FindBy(id = "btnDel")
 	public WebElement buttonDelete;
 	
+	@FindBy(xpath = "//td[@class='tdName tdValue']")
+	public WebElement firstLanguage;
+	
 	
 	
 	
