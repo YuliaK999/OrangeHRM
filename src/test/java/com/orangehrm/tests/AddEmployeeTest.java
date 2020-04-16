@@ -1,6 +1,8 @@
 package com.orangehrm.tests;
 
 import java.io.IOException;
+import java.security.spec.PSSParameterSpec;
+
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -19,17 +21,17 @@ public class AddEmployeeTest extends TestBase {
 		Thread.sleep(3000);
 	}
 	
-	@Test
-	 public void addEmployeeFunctionalityTest() throws InterruptedException {
+	@Test (dataProvider="employeeInfo",dataProviderClass=DataproviderClass.class)
+	 public void addEmployeeFunctionalityTest (String firstName, String lastName, String userName, String password, String repassword) throws InterruptedException, IOException {
 	  logger = reporter.createTest("Verify \"Add Employee\" function");
 	  AddEmployeePage addEmp = new AddEmployeePage();
 	  logger.info("Navigate to \"Add Employee\" page");
 	  addEmp.mainAddEmployee.click();
 	  Thread.sleep(3000);
 	  logger.info("Entering Firs Name \"Ali\" to \"First Name\" field");
-	  addEmp.firstNameField.sendKeys("Ali");
+	  addEmp.firstNameField.sendKeys(firstName);
 	  logger.info("Entering Last Name \"Khan\" to \"Last Name\" field");
-	  addEmp.lastNameField.sendKeys("Khan");
+	  addEmp.lastNameField.sendKeys(lastName);
 	  logger.info("Upload the picture of Employee");
 	  String path = System.getProperty("user.dir") + "\\employeePhoto.jpg";
 	  addEmp.uploadButton.sendKeys(path);
@@ -37,11 +39,11 @@ public class AddEmployeeTest extends TestBase {
 	  addEmp.checkbox.click();
 	  Thread.sleep(3000);
 	  logger.info("Entering username \"Admin\" to \"User Name\" field");
-	  addEmp.userNameField.sendKeys("Admin");
+	  addEmp.userNameField.sendKeys(userName);
 	  logger.info("Entering password \"admin123\" to \"Password\" field");
-	  addEmp.passwordField.sendKeys("admin123");
+	  addEmp.passwordField.sendKeys(password);
 	  logger.info("ReEntering password \"admin123\" to \"Confirm Password\" field");
-	  addEmp.confirmPasswordField.sendKeys("admin123");
+	  addEmp.confirmPasswordField.sendKeys(repassword);
 	  BrowserUtilities.selectByVisibleText(addEmp.selectStatus, "Disabled");
 	  logger.info("Click to \"Save\" button");
 	  addEmp.saveButton.click();
