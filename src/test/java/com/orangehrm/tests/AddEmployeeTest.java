@@ -1,8 +1,6 @@
 package com.orangehrm.tests;
 
 import java.io.IOException;
-import java.security.spec.PSSParameterSpec;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
