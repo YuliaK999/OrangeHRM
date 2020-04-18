@@ -4,19 +4,31 @@ import org.testng.annotations.DataProvider;
 
 public class DataproviderClass {
 
-	@DataProvider // 2 times with 3 parameters
+	@DataProvider
+	public static Object[][] addLanguages(){
 
-	public static Object[][] addLanguages() {
-
-		Object[][] LangData = new Object[][] { { "Russian", "Turkish", "English", "French" }, };
-		return LangData;
+	Object[][] LangData = new Object[][] {
+	{"Russian","Turkish","English"},
+	};
+	return LangData;
 	}
+
+
+	@DataProvider
+	public static Object[][] addSkills(){
+
+	Object[][] SkillData = new Object[][] {
+	{"teamwork","leadership","communication"},
+	};
+	return SkillData;
+	}
+
 
 	@DataProvider
 	public static Object[][] employeeInfo() {
 
-		Object[][] Data = new Object[][] { { "Ali" , "Khan", "Admin", "admin123" ,"admin123" }, };
-		return Data;
+	Object[][] Data = new Object[][] { { "Ali" , "Khan", "Admin", "admin123" ,"admin123" }, };
+	return Data;
 	}
 
 }

@@ -14,8 +14,14 @@ public class AdminPage {
 	
 	@FindBy(id = "menu_admin_viewAdminModule")
 	public WebElement mainMenuAdmin;
-	
+
 	@FindBy(tagName = "h1")
 	public WebElement headingSystemUsers;
+
+	@FindBy(id = "search_form")
+	public WebElement searchForm;
+
+	@FindBy(xpath = "(//div[@id='content']//a)[1]")
+	public WebElement header;
 
 }
