@@ -11,21 +11,21 @@ import com.orangehrm.utils.BrowserUtilities;
 public class AddEmployeeTest extends TestBase {
 
 	@BeforeMethod
-	public void login() throws InterruptedException {
+	public void login(){
 		logger = reporter.createTest("Before Test");
 		PimMenuPage pimMenu = new PimMenuPage();
 		logger.info("Navigate to \"PIM menu \" page");
 		pimMenu.mainMenuPIM.click();
-		Thread.sleep(3000);
+		BrowserUtilities.waitFor(3);
 	}
 	
 	@Test (dataProvider="employeeInfo",dataProviderClass=DataproviderClass.class)
-	 public void addEmployeeFunctionalityTest (String firstName, String lastName, String userName, String password, String repassword) throws InterruptedException, IOException {
+	 public void addEmployeeFunctionalityTest (String firstName, String lastName, String userName, String password, String repassword) throws IOException {
 	  logger = reporter.createTest("Verify \"Add Employee\" function");
 	  AddEmployeePage addEmp = new AddEmployeePage();
 	  logger.info("Navigate to \"Add Employee\" page");
 	  addEmp.mainAddEmployee.click();
-	  Thread.sleep(3000);
+	  BrowserUtilities.waitFor(3);
 	  logger.info("Entering Firs Name \"Ali\" to \"First Name\" field");
 	  addEmp.firstNameField.sendKeys(firstName);
 	  logger.info("Entering Last Name \"Khan\" to \"Last Name\" field");
@@ -35,7 +35,7 @@ public class AddEmployeeTest extends TestBase {
 	  addEmp.uploadButton.sendKeys(path);
 	  logger.info("Check the \"Create Login Details\" checkbox");
 	  addEmp.checkbox.click();
-	  Thread.sleep(3000);
+	  BrowserUtilities.waitFor(3);;
 	  logger.info("Entering username \"Admin\" to \"User Name\" field");
 	  addEmp.userNameField.sendKeys(userName);
 	  logger.info("Entering password \"admin123\" to \"Password\" field");
@@ -61,7 +61,7 @@ public class AddEmployeeTest extends TestBase {
 	}
 
 	@Test
-	public void verifyAddEmpFormLabelsTest() throws InterruptedException {
+	public void verifyAddEmpFormLabelsTest() {
 		logger = reporter.createTest("Verify Add Employee Labels");
 		AddEmployeePage addEmp = new AddEmployeePage();
 		logger.info("Navigate to \"Add Employee\" page");
@@ -76,7 +76,7 @@ public class AddEmployeeTest extends TestBase {
 	}
 
 	@Test
-	public void verifyingChosenFileTest() throws InterruptedException, IOException {
+	public void verifyingChosenFileTest() throws IOException {
 		logger = reporter.createTest("Verify Chosen File");
 		AddEmployeePage addEmp = new AddEmployeePage();
 		logger.info("Navigate to \"Add Employee\" page");
@@ -92,7 +92,7 @@ public class AddEmployeeTest extends TestBase {
 	}
 
 	@Test
-	public void verifyAddEmployeeFormErrorMessagesTest() throws InterruptedException {
+	public void verifyAddEmployeeFormErrorMessagesTest() {
 		logger = reporter.createTest("Verify Add Employee Form Error Messages");
 		AddEmployeePage addEmp = new AddEmployeePage();
 		logger.info("Navigate to \"Add Employee\" page");
@@ -112,12 +112,12 @@ public class AddEmployeeTest extends TestBase {
 	}
 	
 	@Test
-	public void verifyCreateLoginDetailsFormLebelsTest() throws InterruptedException {
+	public void verifyCreateLoginDetailsFormLebelsTest() {
 		logger = reporter.createTest("Verify Create Login Details Labels");
 		AddEmployeePage addEmp = new AddEmployeePage();
 		logger.info("Navigate to \"Add Employee\" page");
 		addEmp.mainAddEmployee.click();
-		Thread.sleep(3000);
+		BrowserUtilities.waitFor(3);
 		logger.info("Check the \"Create Login Details\" checkbox");
 		addEmp.checkbox.click();
 		BrowserUtilities.waitFor(5);
@@ -130,12 +130,12 @@ public class AddEmployeeTest extends TestBase {
 	}
 	
 	@Test
-	public void verifyCreateLoginDetailsFormErrorMessagesTest() throws InterruptedException {
+	public void verifyCreateLoginDetailsFormErrorMessagesTest() {
 		logger = reporter.createTest("Verify \"Create Login Details\" Form error Messages");
 		AddEmployeePage addEmp = new AddEmployeePage();
 		logger.info("Navigate to \"Add Employee\" page");
 		addEmp.mainAddEmployee.click();
-		Thread.sleep(3000);
+		BrowserUtilities.waitFor(3);
 		logger.info("Check the \"Create Login Details\" checkbox");
 		addEmp.checkbox.click();
 		
