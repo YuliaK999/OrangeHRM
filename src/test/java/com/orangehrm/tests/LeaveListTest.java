@@ -48,7 +48,7 @@ public class LeaveListTest extends TestBase {
 		Assert.assertEquals(leaveListPage.employeeName.getText(), "Linda Anderson");
 		logger.info("Verify number of days is calculated correctly");
 		int number = leaveListPage.leaveLength(leaveListPage.leaveDates);
-		Assert.assertEquals(number-1,leaveListPage.numberOfDays.getText().substring(0, 2));
+		Assert.assertEquals(number-1+"",leaveListPage.numberOfDays.getText().substring(0, 2));
 		logger.pass("Verified leave list");
 		}
 	

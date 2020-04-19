@@ -8,10 +8,10 @@ import com.orangehrm.utils.BrowserUtilities;
 
 public class DirectoryTest extends TestBase {
 
-	DirectoryPage directorypage = new DirectoryPage();
-
+	
 	@Test
 	public void verifyPageTitle() {
+		DirectoryPage directorypage = new DirectoryPage();
 		logger = reporter.createTest("Verify Page Title /Orange HRM/");
 		logger.info("Land on Directory");
 		directorypage.directory.click();
@@ -21,6 +21,7 @@ public class DirectoryTest extends TestBase {
 
 	@Test
 	public void searchDirectory() {
+		DirectoryPage directorypage = new DirectoryPage();
 		directorypage.directory.click();
 		logger = reporter.createTest("Search Employe and Verify The Correct Name");
 		logger.info("Enter name:Linda Anderson");
@@ -39,6 +40,7 @@ public class DirectoryTest extends TestBase {
 
 	@Test
 	public void ResetDirectory() {
+		DirectoryPage directorypage = new DirectoryPage();
 		directorypage.directory.click();
 
 		logger = reporter.createTest("Click on Reset Button and Verify Message");
@@ -53,7 +55,7 @@ public class DirectoryTest extends TestBase {
 
 //	@Test
 //	public void SearchHiddenButton() {
-//
+//		DirectoryPage directorypage = new DirectoryPage();
 //		directorypage.directory.click();
 //
 //		directorypage.searchHiddenButton.click();
@@ -63,6 +65,7 @@ public class DirectoryTest extends TestBase {
 
 	@Test
 	public void NoRecordFound() {
+		DirectoryPage directorypage = new DirectoryPage();
 		directorypage.directory.click();
 		logger = reporter.createTest("Verify No Record Found After Negative Search");
 
