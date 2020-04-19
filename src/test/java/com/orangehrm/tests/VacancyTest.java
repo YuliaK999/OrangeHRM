@@ -9,10 +9,10 @@ import com.orangehrm.utils.BrowserUtilities;
 
 public class VacancyTest extends TestBase {
 
-	VacancyPage vacancyPage = new VacancyPage();
-	
+		
 	@Test
 	public void verifyVacancyForm()  {
+		VacancyPage vacancyPage = new VacancyPage();
 		logger = reporter.createTest("Verify vacancy form");
 		vacancyPage.mainMenuRecruitment.click();
 		vacancyPage.vacancies.click();
@@ -34,6 +34,7 @@ public class VacancyTest extends TestBase {
 	@Ignore	
 	@Test
 	public void verifyErrorMessages()  {
+		VacancyPage vacancyPage = new VacancyPage();
 		logger = reporter.createTest("Verify Error messages");
 		vacancyPage.mainMenuRecruitment.click();
 		vacancyPage.vacancies.click();

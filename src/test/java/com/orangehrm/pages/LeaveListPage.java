@@ -101,11 +101,11 @@ public class LeaveListPage {
 		
 	String begin = dates.getText().substring(0, 10);// 2015-10-19
 	int beginYear = Integer.parseInt(begin.substring(0,4));
-	String beginMonth = begin.substring(5,7);
+	//String beginMonth = begin.substring(5,7);
 	int beginDay = Integer.parseInt(begin.substring(8));
 	String end = dates.getText().substring(14);//2015-10-30
 	int endYear = Integer.parseInt(end.substring(0,4));
-	String endMonth = end.substring(5,7);
+	//String endMonth = end.substring(5,7);
 	int endDay = Integer.parseInt(end.substring(8));
 	LocalDate beginDate = LocalDate.of(beginYear, Month.OCTOBER, beginDay);
 	LocalDate endDate = LocalDate.of(endYear, Month.OCTOBER, endDay);
@@ -114,6 +114,22 @@ public class LeaveListPage {
 	
 	return diff.getYears() + diff.getMonths() + diff.getDays();
 	}
+	
+	public boolean DatePeriodIsInside() {
+	    // 2015-10-19 to 2015-10-30
+	        LocalDate inputFrom = LocalDate.parse(calendarFrom.getAttribute("value")); 
+	        LocalDate inputTo = LocalDate.parse(calendarTo.getAttribute("value")); 
+	        LocalDate resultFrom = LocalDate.parse(leaveDates.getText().substring(0,10)); 
+	        LocalDate resultTo = LocalDate.parse(leaveDates.getText().substring(14)); 
+	        boolean b = false;
+	        if (inputFrom.isBefore(resultFrom) & inputTo.isAfter(resultTo))
+	        	b = true;
+	        else b = false;
+	        
+	        return b;
+	        	       
+	    } 
+	
 	
 
 	

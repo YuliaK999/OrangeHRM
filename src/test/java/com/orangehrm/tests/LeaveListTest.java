@@ -49,6 +49,8 @@ public class LeaveListTest extends TestBase {
 		logger.info("Verify number of days is calculated correctly");
 		int number = leaveListPage.leaveLength(leaveListPage.leaveDates);
 		Assert.assertEquals(number-1+"",leaveListPage.numberOfDays.getText().substring(0, 2));
+		System.out.println(leaveListPage.calendarFrom.getText());
+		Assert.assertTrue(leaveListPage.DatePeriodIsInside());
 		logger.pass("Verified leave list");
 		}
 	

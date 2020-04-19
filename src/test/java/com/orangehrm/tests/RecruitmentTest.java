@@ -17,10 +17,10 @@ import com.orangehrm.utils.ConfigReader;
 
 public class RecruitmentTest extends TestBase {
 
-	RecruitmentPage recruitment = new RecruitmentPage();
-	
+		
 	@Test
 	public void verifyPageTitle() {
+		RecruitmentPage recruitment = new RecruitmentPage();
 		logger = reporter.createTest("Verify PageTitle is \"OrangeHRM\"");
 		recruitment.mainMenuRecruitment.click();
 		BrowserUtilities.waitFor(5);
@@ -32,6 +32,7 @@ public class RecruitmentTest extends TestBase {
 
 	@Test
 	public void verifyCandidateForm() {
+		RecruitmentPage recruitment = new RecruitmentPage();
 		logger = reporter.createTest("Verify candidate form");
 		recruitment.mainMenuRecruitment.click();
 		recruitment.candidates.click();
@@ -59,6 +60,7 @@ public class RecruitmentTest extends TestBase {
 	@Test
 	@Ignore
 	public void verifyAddButton()  {
+		RecruitmentPage recruitment = new RecruitmentPage();
 		logger = reporter.createTest("Verify Add button");
 		recruitment.mainMenuRecruitment.click();
 		recruitment.vacancies.click();
