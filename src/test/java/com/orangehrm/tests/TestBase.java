@@ -12,6 +12,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -34,6 +36,7 @@ protected static ExtentReports reporter;
 protected static ExtentSparkReporter htmlreporter;
 protected static ExtentTest logger;
 
+	
 	@BeforeSuite (alwaysRun = true)
 	public void setUpSuite() {
 		reporter = new ExtentReports();
@@ -51,10 +54,11 @@ protected static ExtentTest logger;
 		}
 	
 	
-
+	
 	@BeforeMethod (alwaysRun = true)
-	public void setUp () {
-		driver = Driver.getDriver();
+	@Parameters ("browser")
+	public void setUp (@Optional String browser) {
+		driver = Driver.getDriver(browser);
 		actions = new Actions(driver);
 		driver.manage().timeouts().implicitlyWait(Long.parseLong(
 				ConfigReader.getConfiguration("implicitTimeout")), TimeUnit.SECONDS);

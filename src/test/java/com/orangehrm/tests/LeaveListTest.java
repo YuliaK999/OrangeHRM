@@ -5,6 +5,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
+
+import com.orangehrm.pages.EmployeeListPage;
 import com.orangehrm.pages.LeaveListPage;
 import com.orangehrm.pages.LoginPage;
 import com.orangehrm.utils.BrowserUtilities;
@@ -14,6 +16,7 @@ public class LeaveListTest extends TestBase {
 
 	
 	@Test
+	@Ignore
 	public void verifyLeaveList() throws InterruptedException  {
 		logger = reporter.createTest("Verify Leave List");
 		
@@ -54,7 +57,50 @@ public class LeaveListTest extends TestBase {
 		logger.pass("Verified leave list");
 		}
 	
+		
 		@Test
+		public void verifyResultLinks() {
+			logger = reporter.createTest("Verify Result Links");
+				logger.info("Login and navigate to \"Leave\" main menu");
+				LeaveListPage leaveListPage = new LeaveListPage();
+				BrowserUtilities.hover(leaveListPage.mainMenuLeave);
+				logger.info("Navigate to \"Leave Lists\" page");
+				leaveListPage.menuLeaveList.click();
+				logger.info("Fill up leave list form");
+				leaveListPage.calendarFrom.click();
+				leaveListPage.selectDate("Jan", 2015, 1);		
+				
+				leaveListPage.calendarTo.click();
+				leaveListPage.selectDate("Dec", 2015, 31);		
+						
+				if(!leaveListPage.checkboxLeaveStatusAll.isSelected()) 
+					leaveListPage.checkboxLeaveStatusAll.click();
+				
+				for (WebElement element : leaveListPage.checkboxleaveStatuses)
+					Assert.assertTrue(element.isSelected());
+				
+				leaveListPage.fieldEmployee.sendKeys("Linda Anderson");
+					
+				BrowserUtilities.selectByVisibleText(leaveListPage.dropdownSubUnit,"All");
+				
+				if(!leaveListPage.checkboxIncludePastEmployees.isSelected()) 
+					leaveListPage.checkboxIncludePastEmployees.click();
+				
+				leaveListPage.buttonSearch.click();
+				BrowserUtilities.waitFor(5);
+				
+			leaveListPage.employeeLink.click();
+			//BrowserUtilities.waitFor(5);
+			Assert.assertTrue(driver.getCurrentUrl().contains("viewEmployee"));
+			System.out.println(new EmployeeListPage().employeeNameField.getAttribute("value"));
+			driver.navigate().back();
+			leaveListPage.leaveDates.click();
+			Assert.assertTrue(driver.getCurrentUrl().contains("viewLeaveRequest"));	
+		}
+		
+	
+		@Test
+		@Ignore
 		public void verifyLeaveSearchByStatus() throws InterruptedException  {
 			logger = reporter.createTest("Verify leave search by Status");
 			
@@ -93,6 +139,7 @@ public class LeaveListTest extends TestBase {
 		}
 			
 			@Test
+			@Ignore
 			public void verifyLeaveSearchBySubUnit() throws InterruptedException  {
 				logger = reporter.createTest("Verify leave search by Sub Unit");
 				
@@ -126,6 +173,7 @@ public class LeaveListTest extends TestBase {
 			}
 			
 			@Test
+			@Ignore
 			public void verifyResetButton() throws InterruptedException  {
 				logger = reporter.createTest("Verify reset button");
 				

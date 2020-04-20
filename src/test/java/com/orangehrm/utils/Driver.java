@@ -1,5 +1,6 @@
 package com.orangehrm.utils;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -11,6 +12,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Driver {
@@ -19,9 +21,13 @@ public class Driver {
 	
 	private static WebDriver driver;
 	
-	public static WebDriver getDriver() {
+	public static WebDriver getDriver(String browser) {
 		if(driver == null) {
-			String browser = ConfigReader.getConfiguration("browser");
+			
+			if(browser==null) {
+				browser = ConfigReader.getConfiguration("browser");
+			}
+			
 			switch(browser) {
 			case "chrome": 
 				WebDriverManager.chromedriver().setup();
@@ -74,7 +80,9 @@ public class Driver {
 	}
 	
 		
-	
+	public static WebDriver getDriver() {
+		return getDriver(null);
+	}
 	
 	
 	public static void closeDriver() {
