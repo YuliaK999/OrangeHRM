@@ -30,5 +30,13 @@ public class DataproviderClass {
 	Object[][] Data = new Object[][] { { "Ali" , "Khan", "Admin", "admin123" ,"admin123" }, };
 	return Data;
 	}
+	
+	@DataProvider
+	public static Object[][] addCustomFields(){
+
+	Object[][] FieldData = new Object[][] { { "Hobby" , "Sport", "Nationality", "Race" ,"Education" }, };
+	return FieldData;
+	}
+
 
 }
