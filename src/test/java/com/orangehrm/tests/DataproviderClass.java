@@ -40,7 +40,7 @@ public class DataproviderClass {
 	@DataProvider
 	public static Object[][] employeeInfo() {
 
-	Object[][] Data = new Object[][] { { "Ali" , "Khan", "Admin", "admin123" ,"admin123" }, };
+	Object[][] Data = new Object[][] { { "Ali" , "Khan", "Alikhan", "alikhan123" ,"alikhan123" }, };
 	return Data;
 	}
 	
