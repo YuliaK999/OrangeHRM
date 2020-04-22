@@ -16,7 +16,6 @@ public class LeaveListTest extends TestBase {
 
 	
 	@Test
-	@Ignore
 	public void verifyLeaveList() throws InterruptedException  {
 		logger = reporter.createTest("Verify Leave List");
 		
@@ -66,6 +65,7 @@ public class LeaveListTest extends TestBase {
 				BrowserUtilities.hover(leaveListPage.mainMenuLeave);
 				logger.info("Navigate to \"Leave Lists\" page");
 				leaveListPage.menuLeaveList.click();
+				
 				logger.info("Fill up leave list form");
 				leaveListPage.calendarFrom.click();
 				leaveListPage.selectDate("Jan", 2015, 1);		
@@ -88,11 +88,12 @@ public class LeaveListTest extends TestBase {
 				
 				leaveListPage.buttonSearch.click();
 				BrowserUtilities.waitFor(5);
-				
+			
+			logger.info("Verify \"Employee name\" link navigates to \"Employee\" page");
 			leaveListPage.employeeLink.click();
-			//BrowserUtilities.waitFor(5);
+			BrowserUtilities.waitFor(5);
 			Assert.assertTrue(driver.getCurrentUrl().contains("viewEmployee"));
-			System.out.println(new EmployeeListPage().employeeNameField.getAttribute("value"));
+			logger.info("Verify \"Days\" link navigates to \"Leave Request\" page");
 			driver.navigate().back();
 			leaveListPage.leaveDates.click();
 			Assert.assertTrue(driver.getCurrentUrl().contains("viewLeaveRequest"));	
@@ -100,7 +101,6 @@ public class LeaveListTest extends TestBase {
 		
 	
 		@Test
-		@Ignore
 		public void verifyLeaveSearchByStatus() throws InterruptedException  {
 			logger = reporter.createTest("Verify leave search by Status");
 			
@@ -139,7 +139,6 @@ public class LeaveListTest extends TestBase {
 		}
 			
 			@Test
-			@Ignore
 			public void verifyLeaveSearchBySubUnit() throws InterruptedException  {
 				logger = reporter.createTest("Verify leave search by Sub Unit");
 				
@@ -173,7 +172,6 @@ public class LeaveListTest extends TestBase {
 			}
 			
 			@Test
-			@Ignore
 			public void verifyResetButton() throws InterruptedException  {
 				logger = reporter.createTest("Verify reset button");
 				
