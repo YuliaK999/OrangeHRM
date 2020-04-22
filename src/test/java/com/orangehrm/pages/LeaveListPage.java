@@ -88,7 +88,7 @@ public class LeaveListPage {
 	@FindBy (xpath="//*[@id='resultTable']//tr//td[2]")
 	public WebElement employeeName;
 	
-	@FindBy (xpath="//a[@href='\"/index.php/pim/viewEmployee/empNumber/1\']")
+	@FindBy (xpath="//*[@id=\"resultTable\"]/tbody/tr/td[2]/a")
 	public WebElement employeeLink;
 	
 	@FindBy (xpath="//*[@id='resultTable']//tr//td[5]")

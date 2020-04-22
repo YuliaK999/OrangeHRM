@@ -22,6 +22,19 @@ public class DataproviderClass {
 	};
 	return SkillData;
 	}
+	
+	@DataProvider	//execute the test 2 times
+	public static Object[][] keyWordSearch(){
+
+	Object[][] keyWordEmployee = new Object[][] {
+	{"L","Linda Anderson"},
+	{"f","Thomas Fleming"},
+	{"r","Jasmine Morgan"},
+	{"A","Robert Craig"},
+	{"f","Thomas Fleming"},
+	};
+	return keyWordEmployee;
+	}
 
 
 	@DataProvider
