@@ -40,7 +40,7 @@ public class OptionalFieldsTest extends TestBase {
 	
 	@Test
 	public void optionalFieldsMenuFunctionalityTest() throws IOException {
-		logger = reporter.createTest("Configure PIM Form Verification");
+		logger = reporter.createTest("Configure PIM Functionality Verification Test");
 		OptionalFieldsPage optFields = new OptionalFieldsPage();
 		logger.info("Navigate to \"Configuration\" menu");
 		BrowserUtilities.hover(optFields.configurationMenu);
@@ -49,6 +49,7 @@ public class OptionalFieldsTest extends TestBase {
 		BrowserUtilities.waitFor(2);
 		logger.info("Clicking to \"Edit\" button");
 		optFields.editButton.click();
+		logger.info("Checking all optional fields checkboxes");
 		List<WebElement> checkboxes = optFields.checkboxes;
 		for (WebElement webElement : checkboxes) {
 			if (!webElement.isSelected()) {
