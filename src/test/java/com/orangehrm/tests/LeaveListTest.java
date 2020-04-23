@@ -16,7 +16,6 @@ public class LeaveListTest extends TestBase {
 
 	
 	@Test
-	@Ignore
 	public void verifyLeaveList() throws InterruptedException  {
 		logger = reporter.createTest("Verify Leave List");
 		
@@ -100,7 +99,6 @@ public class LeaveListTest extends TestBase {
 		
 	
 		@Test
-		@Ignore
 		public void verifyLeaveSearchByStatus() throws InterruptedException  {
 			logger = reporter.createTest("Verify leave search by Status");
 			
