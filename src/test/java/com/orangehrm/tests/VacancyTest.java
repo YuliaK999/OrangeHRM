@@ -33,7 +33,7 @@ public class VacancyTest extends TestBase {
 
 	}
 
-	// @Ignore
+	
 	@Test
 	public void verifyErrorMessages() {
 		VacancyPage vacancyPage = new VacancyPage();

@@ -32,6 +32,7 @@ public class CustomFieldsTest extends TestBase {
 		BrowserUtilities.waitFor(2);
 		logger.info("Verifying the page's heading is \"Add Custom Field\"");
 		Assert.assertTrue(cusFields.addCustomFieldHeader.getText().equals("Add Custom Field"));
+		System.out.println(cusFields.addCustomFieldHeader.getText());
 		logger.pass("Verified the page's heading is \"Add Custom Field\"");
 	}
 	

@@ -53,7 +53,7 @@ public class CandidatesPage {
 	@FindBy(xpath="//a[@class='toggle tiptip']")
 	public WebElement candidatesHeader;
 	
-	@FindBy(xpath="//input[@class='checkbox']")
+	@FindBy(id="addCandidate_consentToKeepData")
 	public WebElement addCandidatesCheckBox;
 	
 	

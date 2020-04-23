@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Crossbrowser Tests">
+<suite name="crossbrowser_tests">
 <!--  -->
 	<test  name="Chrome Test">
 	<parameter name = "browser" value ="chrome"></parameter>
 		<classes>
-			<class name="com.orangehrm.tests.VacancyTest" />
+			<class name="com.orangehrm.tests.AdminTest" />
 		</classes>
 	</test> <!-- Test -->
 	
     <test  name="Firefox Test">
 	<parameter name = "browser" value ="firefox"></parameter>
 		<classes>
+			<class name="com.orangehrm.tests.CandidatesTest" />
 			<class name="com.orangehrm.tests.VacancyTest" />
 		</classes>
 	</test> 
@@ -19,14 +20,15 @@
 	<test name="Edge Test">
 	<parameter name = "browser" value ="edge"></parameter>
 		<classes>
-			<class name="com.orangehrm.tests.VacancyTest" />
+			<class name="com.orangehrm.tests.CustomFieldsTest" />
+			<class name="com.orangehrm.tests.OptionalFieldsTest" />
 		</classes>
 	</test> <!-- Test -->
 	
 	<test name="Headless Chrome Test">
 	<parameter name = "browser" value ="headlessChrome"></parameter>
 		<classes>
-			<class name="com.orangehrm.tests.VacancyTest" />
+			<class name="com.orangehrm.tests.EmployeeEntitlementsTest" />
 		</classes>
 	</test> <!-- Test -->
 	

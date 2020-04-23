@@ -13,7 +13,7 @@ public class CandidatesTest extends TestBase {
 			
 			CandidatesPage candidatesPage = new CandidatesPage ();
 			
-			logger =reporter.createTest("Verify Candidate Hedaer is Visible");
+			logger =reporter.createTest("Verify Candidate Header is Visible");
 			
 			logger.info("Click on Recruitment Page");
 			candidatesPage.mainMenuRecruitment.click();
@@ -63,11 +63,11 @@ public class CandidatesTest extends TestBase {
 			candidatesPage.addCandidatesDateOfApplication.sendKeys("22-04-2020");
 			
 			
-			if(!candidatesPage.addCandidatesCheckBox.isSelected()) {
+			/*if(!candidatesPage.addCandidatesCheckBox.isSelected()) {
 				candidatesPage.addCandidatesCheckBox.click();
 				BrowserUtilities.waitFor(3);
-				
-			}
+			}*/
+			
 			candidatesPage.addCandidatesSaveButton.click();
 			logger.info("Verify Error Header ");
 			Assert.assertTrue(candidatesPage.candidatesErrorHeader.isDisplayed());

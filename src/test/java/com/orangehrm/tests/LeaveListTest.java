@@ -97,6 +97,8 @@ public class LeaveListTest extends TestBase {
 			driver.navigate().back();
 			leaveListPage.leaveDates.click();
 			Assert.assertTrue(driver.getCurrentUrl().contains("viewLeaveRequest"));	
+			driver.navigate().back();
+			logger.pass("Verified Result Links");
 		}
 		
 	
