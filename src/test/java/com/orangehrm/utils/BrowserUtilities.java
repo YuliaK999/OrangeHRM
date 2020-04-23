@@ -51,7 +51,7 @@ public class BrowserUtilities {
     
 	public static void selectByIndex(WebElement element, int index) {
         Select select = new Select(element);
-        select.deselectByIndex(index);
+        select.selectByIndex(index);
     }
 	
 	public static void selectByValue(WebElement element, String value) {

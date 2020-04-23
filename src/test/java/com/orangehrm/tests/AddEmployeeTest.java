@@ -36,11 +36,11 @@ public class AddEmployeeTest extends TestBase {
 	  logger.info("Check the \"Create Login Details\" checkbox");
 	  addEmp.checkbox.click();
 	  BrowserUtilities.waitFor(3);;
-	  logger.info("Entering username \"Admin\" to \"User Name\" field");
+	  logger.info("Entering username \"Alikhan\" to \"User Name\" field");
 	  addEmp.userNameField.sendKeys(userName);
-	  logger.info("Entering password \"admin123\" to \"Password\" field");
+	  logger.info("Entering password \"alikhan123\" to \"Password\" field");
 	  addEmp.passwordField.sendKeys(password);
-	  logger.info("ReEntering password \"admin123\" to \"Confirm Password\" field");
+	  logger.info("ReEntering password \"alikhan123\" to \"Confirm Password\" field");
 	  addEmp.confirmPasswordField.sendKeys(repassword);
 	  BrowserUtilities.selectByVisibleText(addEmp.selectStatus, "Disabled");
 	  logger.info("Click to \"Save\" button");

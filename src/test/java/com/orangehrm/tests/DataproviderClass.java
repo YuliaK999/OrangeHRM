@@ -22,12 +22,25 @@ public class DataproviderClass {
 	};
 	return SkillData;
 	}
+	
+	@DataProvider	//execute the test 2 times
+	public static Object[][] keyWordSearch(){
+
+	Object[][] keyWordEmployee = new Object[][] {
+	{"L","Linda Anderson"},
+	{"f","Thomas Fleming"},
+	{"r","Jasmine Morgan"},
+	{"A","Robert Craig"},
+	{"f","Thomas Fleming"},
+	};
+	return keyWordEmployee;
+	}
 
 
 	@DataProvider
 	public static Object[][] employeeInfo() {
 
-	Object[][] Data = new Object[][] { { "Ali" , "Khan", "Admin", "admin123" ,"admin123" }, };
+	Object[][] Data = new Object[][] { { "Ali" , "Khan", "Alikhan", "alikhan123" ,"alikhan123" }, };
 	return Data;
 	}
 	
