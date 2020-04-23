@@ -60,5 +60,29 @@ public class VacancyPage {
 	
 	@FindBy(id = "btnAdd")
 	public WebElement addButton;
+	
+	@FindBy(id = "btnSave")
+	public WebElement saveButton;
+	
+	
+	
+	@FindBy(xpath = "//div[@class='message error']")
+	public WebElement messageEror;
+	
+	@FindBy(xpath = "//select[@id='addJobVacancy_jobTitle']")
+	public WebElement addJobVacancyjobTitle;
+	
+	@FindBy(id = "addJobVacancy_name")
+	public WebElement addJobVacancyName;
+	
+	@FindBy(id = "addJobVacancy_hiringManager")
+	public WebElement addJobVacancyHiringManager;
+	
+	@FindBy(xpath = "//input[@id='addJobVacancy_status']")
+	public WebElement checkJobVacancyButton1;
+
+	@FindBy(xpath = "//input[@id='addJobVacancy_publishedInFeed']")
+	public WebElement checkJobVacancyButtonPublish;
+	
 
 }
