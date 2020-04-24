@@ -1,6 +1,7 @@
 package com.orangehrm.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.orangehrm.pages.CandidatesPage;
@@ -9,6 +10,7 @@ import com.orangehrm.utils.BrowserUtilities;
 public class CandidatesTest extends TestBase {
 		
 		@Test
+		@Ignore
 		public void CandidateHeader() {
 			
 			CandidatesPage candidatesPage = new CandidatesPage ();
@@ -29,6 +31,7 @@ public class CandidatesTest extends TestBase {
 			
 		}
 		@Test
+		@Ignore
 		public void  AddCandidatesHeader() {
 			CandidatesPage candidatesPage = new CandidatesPage ();
 			
@@ -75,6 +78,7 @@ public class CandidatesTest extends TestBase {
 			
 		}
 		@Test
+		@Ignore
 		public void NegativeCompleteAddCandidateForm() {
 			CandidatesPage candidatesPage = new CandidatesPage ();
 			logger =reporter.createTest("Click On Save Button Without Completing form");

@@ -18,7 +18,7 @@ public class DataproviderClass {
 	public static Object[][] addSkills(){
 
 	Object[][] SkillData = new Object[][] {
-	{"teamwork","leadership","communication"},
+	{"1","2","3"},
 	};
 	return SkillData;
 	}

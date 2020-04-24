@@ -5,14 +5,13 @@
 	<test  name="Chrome Test">
 	<parameter name = "browser" value ="chrome"></parameter>
 		<classes>
-			<class name="com.orangehrm.tests.AdminTest" />
+			<class name="com.orangehrm.tests.CandidatesTest" />
 		</classes>
 	</test> <!-- Test -->
 	
     <test  name="Firefox Test">
 	<parameter name = "browser" value ="firefox"></parameter>
 		<classes>
-			<class name="com.orangehrm.tests.CandidatesTest" />
 			<class name="com.orangehrm.tests.VacancyTest" />
 		</classes>
 	</test> 

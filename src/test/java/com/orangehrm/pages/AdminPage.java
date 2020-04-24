@@ -47,8 +47,8 @@ public class AdminPage {
     
     @FindBy (id="searchBtn")
     public WebElement BtnSearch;
-    
-    @FindBy (id="ohrmList_chkSelectRecord_10")
+        
+    @FindBy (xpath="(//input[@type='checkbox'])[2]")
     public WebElement SelectRecord;
     
     @FindBy (id="btnDelete")
@@ -57,7 +57,14 @@ public class AdminPage {
     @FindBy (id="dialogDeleteBtn")
     public WebElement DiaButtonDelete;
     
-    @FindBy (xpath="//*[@id=\"resultTable\"]/tbody/tr/td")
+    @FindBy (xpath="//*[@id='resultTable']//tr//td")
     public WebElement noRecordsFoundText;
+    
+    @FindBy (xpath="//*[@id='resultTable']//tr//td[4]")
+	public WebElement resultEmployeeName;
+    
+    @FindBy (xpath="//*[@id='resultTable']//tr//td[2]")
+	public WebElement resultUserName;
+    
 
 }

@@ -8,6 +8,7 @@ import java.util.List;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.orangehrm.pages.LanguagesPage;
@@ -15,7 +16,7 @@ import com.orangehrm.utils.BrowserUtilities;
 
 
 public class LanguagesTest extends TestBase{
-	
+	@Ignore
 	@Test(dataProvider="addLanguages",dataProviderClass=DataproviderClass.class)
 
 	public void verifyLanguages(String language1, String language2, String language3) throws InterruptedException, IOException{
@@ -108,15 +109,13 @@ public class LanguagesTest extends TestBase{
 	logger.info("Verify skills are added to the table");
 	JavascriptExecutor js = (JavascriptExecutor)driver;
 
-	/*for (String skill : skills) {
+	for (String skill : skills) {
 	languagePage.buttonAdd.click();
 	languagePage.fieldName2.sendKeys(skill);
 	languagePage.buttonSave.click();
 	BrowserUtilities.waitFor(3);
-	//js.executeScript("arguments[0].isDisplayed;", languagePage.message);
 	BrowserUtilities.takeFullScreenshot("Successful message");
-	System.out.println(js.executeScript("arguments[0].getText", languagePage.message));
-	Assert.assertTrue(languagePage.getSkill(skill).isDisplayed());*/
+	Assert.assertTrue(languagePage.getSkill(skill).isDisplayed());
 
 	languagePage.buttonAdd.click();
 	languagePage.fieldName2.sendKeys(skill3);
@@ -127,4 +126,5 @@ public class LanguagesTest extends TestBase{
 	logger.pass("Verified \"skills\"");
 	}
 
+	}
 }

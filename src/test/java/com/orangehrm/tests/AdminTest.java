@@ -15,6 +15,7 @@ public class AdminTest extends TestBase{
 		
 		
 	@Test
+	@Ignore
 	public void verifySearchForm() throws InterruptedException, IOException {
 	logger = reporter.createTest("Verify search form");
 	logger.info("Login and navigate to \"Admin\" main menu");
@@ -70,7 +71,7 @@ public class AdminTest extends TestBase{
 
 	logger.info("Verify the URL contains \"SystemUsers\"");
 
-	adminPage.UserName.sendKeys("fiona.grace");
+	adminPage.UserName.sendKeys("thomas.fleming");
 
 	Thread.sleep(1000);
 
@@ -88,7 +89,7 @@ public class AdminTest extends TestBase{
 
 	logger.info("Verify the URL contains \"SystemUsers\"");
 
-	adminPage.EmployeeName.sendKeys("Fiona Grace");
+	adminPage.EmployeeName.sendKeys("Thomas Fleming");
 
 	Thread.sleep(1000);
 
@@ -113,19 +114,21 @@ public class AdminTest extends TestBase{
 	adminPage.BtnSearch.click();
 
 	Thread.sleep(3000);
+	
+	logger.info("Verify Username and name are correct");
 
-	//assert.assertEquals(actual, expected);
-	//assert.assertEquals(actual, expected);
+	Assert.assertEquals(adminPage.resultEmployeeName.getText(), "Thomas Fleming");
+	Assert.assertEquals(adminPage.resultUserName.getText(), "thomas.fleming");
 
 	adminPage.SelectRecord.click();
 
-	Thread.sleep(1000);
+	Thread.sleep(5000);
 
 	adminPage.ButtonDelete.click();
 
 	Thread.sleep(1000);
 
-	  adminPage.DiaButtonDelete.click();
+	adminPage.DiaButtonDelete.click();
 
 	Thread.sleep(1000);
 
@@ -134,7 +137,7 @@ public class AdminTest extends TestBase{
 	}
 
 	 
-
+	
 	@Test
 
 	public void verifySystemUsersDelete() throws InterruptedException {
@@ -171,7 +174,7 @@ public class AdminTest extends TestBase{
 
 	logger.info("Verify the URL contains \"SystemUsers\"");
 
-	adminPage.UserName.sendKeys("jasmine.morgan");
+	adminPage.UserName.sendKeys("thomas.fleming");
 
 	Thread.sleep(1000);
 
@@ -189,7 +192,7 @@ public class AdminTest extends TestBase{
 
 	logger.info("Verify the URL contains \"SystemUsers\"");
 
-	adminPage.EmployeeName.sendKeys("Jasmine Morgan");
+	adminPage.EmployeeName.sendKeys("Thomas Fleming");
 
 	Thread.sleep(1000);
 
@@ -221,11 +224,13 @@ public class AdminTest extends TestBase{
 
 	 
 
-	logger.info("Verify Username Deleted");
+	logger.info("Verify Username got Deleted");
+	
+	 Assert.assertTrue(adminPage.noRecordsFoundText.getText().equals("No Records Found"));
 
 	// Assert.assertTrue(AdminPage.verifySystemUsers.getText().equals("Successfully remotely"));
 
-	 Assert.assertTrue(adminPage.noRecordsFoundText.getText().equals("No Records Found"));
+	
 	}
 	
 }
